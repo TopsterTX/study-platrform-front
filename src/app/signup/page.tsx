@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Form, Input, Space, Typography } from "antd";
-import { CenterContainer } from "@/components/common";
+import { Button, Flex, Form, Input, Space, Typography } from "antd";
+import { CenterContainer } from "../../shared/components";
 
 const SignUpPage = () => {
   const { Title } = Typography;
@@ -47,7 +47,7 @@ const SignUpPage = () => {
           <Input.Password autoComplete="off" placeholder="Пароль" />
         </Form.Item>
         <Form.Item>
-          <Space>
+          <Flex justify="space-between">
             <Button type="primary" htmlType="submit" loading={isLoading}>
               Создать аккаунт
             </Button>
@@ -58,7 +58,7 @@ const SignUpPage = () => {
             >
               Уже есть аккаунт ?
             </Button>
-          </Space>
+          </Flex>
         </Form.Item>
       </Form>
     </CenterContainer>

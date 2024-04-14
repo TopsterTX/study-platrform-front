@@ -1,24 +1,10 @@
-"use client";
-
-import { Button, Form, Input, Space, Typography } from "antd";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { CenterContainer } from "@/components/common";
-import { loginHandler } from "@/app/login/helpers";
+import { Button, Flex, Form, Input, Typography } from "antd";
+import { CenterContainer, request } from "@/shared";
+import { loginHandler } from "@/features";
 
 const LoginPage = () => {
   const { Title } = Typography;
-
-  const router = useRouter();
-  const [_, setBody] = useState<unknown>({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isAuthenticate, setIsAuthenticate] = useState(false);
-
-  useEffect(() => {
-    if (isAuthenticate) {
-      router.push("/dashboard");
-    }
-  }, [isAuthenticate]);
+  // const response = await request("/users", { method: "GET" });
 
   return (
     <CenterContainer
@@ -35,7 +21,7 @@ const LoginPage = () => {
         style={{
           minWidth: "300px",
         }}
-        onFinish={loginHandler({ setBody, setIsLoading, setIsAuthenticate })}
+        // onFinish={loginHandler}
       >
         <Form.Item
           name="username"
@@ -52,18 +38,12 @@ const LoginPage = () => {
           <Input.Password autoComplete="off" placeholder="Пароль" />
         </Form.Item>
         <Form.Item>
-          <Space>
-            <Button type="primary" htmlType="submit" loading={isLoading}>
+          <Flex justify="space-between">
+            <Button type="primary" htmlType="submit">
               Войти
             </Button>
-            <Button
-              type="link"
-              onClick={() => router.push("/signup")}
-              loading={isLoading}
-            >
-              Зарегистрироваться
-            </Button>
-          </Space>
+            <Button type="link">Зарегистрироваться</Button>
+          </Flex>
         </Form.Item>
       </Form>
     </CenterContainer>
