@@ -1,12 +1,11 @@
 import { Metadata } from 'next'
 
-type LayoutProps = Readonly<{
+type LayoutProps = {
   children: React.ReactNode
-}>
+}
 
-// Configure Metadata
 export const metadata: Metadata = {
-  title: 'SignUp',
+  title: 'Change Password | Study Platform',
 }
 
 export default function Layout({ children }: LayoutProps) {

@@ -6,7 +6,7 @@ type LayoutProps = Readonly<{
 
 // Configure Metadata
 export const metadata: Metadata = {
-  title: 'SignUp',
+  title: 'SignIn',
 }
 
 export default function Layout({ children }: LayoutProps) {
