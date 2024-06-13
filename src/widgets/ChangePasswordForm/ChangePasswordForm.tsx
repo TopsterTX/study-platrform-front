@@ -1,52 +1,56 @@
 import { changePasswordFx } from '@/features'
-import { Button, Form, Input } from 'antd'
+import { Button, Input } from '@nextui-org/react'
 import { useUnit } from 'effector-react'
 import { useRouter } from 'next/navigation'
-import { DEFAULT_VALIDATE_TEXT } from '@/shared'
+import { CustomInput, Space } from '@/shared'
 
-const { Item } = Form
-
-export default function ChangePasswordForm() {
+export const ChangePasswordForm = () => {
   const router = useRouter()
   const loading = useUnit(changePasswordFx.pending)
   changePasswordFx.doneData.watch(() => router.push('/signin'))
 
+  const goBackHandler = () => {
+    router.back()
+  }
+
   return (
-    <Form
-      name="basic"
-      autoComplete="off"
-      layout="horizontal"
-      onFinish={changePasswordFx}
-      className="min-w-full"
-    >
-      <Item
-        name="email"
-        rules={[{ required: true, message: DEFAULT_VALIDATE_TEXT }]}
+    <Space className="flex flex-col gap-4">
+      <Space className="flex-col max-w-72 gap-4 mb-4 justify-center items-center m-auto">
+        <p className="text-3xl text-blue-600 flex font-bold text-center">
+          Измение пароля
+        </p>
+      </Space>
+      <form
+        name="basic"
+        autoComplete="off"
+        className="w-80 flex gap-6 flex-col"
       >
-        <Input autoComplete="off" placeholder="Email" />
-      </Item>
-      <Item
-        name="secret"
-        rules={[{ required: true, message: DEFAULT_VALIDATE_TEXT }]}
-      >
-        <Input autoComplete="off" placeholder="Секретная фраза" />
-      </Item>
-      <Item
-        name="password"
-        rules={[{ required: true, message: DEFAULT_VALIDATE_TEXT }]}
-      >
-        <Input.Password autoComplete="off" placeholder="Новый пароль" />
-      </Item>
-      <Item>
-        <Button
-          htmlType="submit"
-          type="primary"
-          className="min-w-full"
-          loading={loading}
-        >
-          Изменить пароль
-        </Button>
-      </Item>
-    </Form>
+        <CustomInput label="Email" />
+        <CustomInput label="Секретная фраза" />
+        <CustomInput type="password" label="Новый пароль" />
+        <CustomInput type="password" label="Повторите пароль" />
+        <Space className="flex-col gap-4">
+          <Button
+            type="submit"
+            radius="sm"
+            variant="shadow"
+            color="primary"
+            className="min-w-full"
+            isLoading={loading}
+          >
+            Изменить пароль
+          </Button>
+          <Button
+            className="min-w-full"
+            variant="light"
+            color="primary"
+            isLoading={loading}
+            onClick={goBackHandler}
+          >
+            Назад
+          </Button>
+        </Space>
+      </form>
+    </Space>
   )
 }

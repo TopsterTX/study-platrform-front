@@ -1,12 +1,12 @@
-import { Input, InputProps } from "@nextui-org/react";
+import { Input, InputProps } from '@nextui-org/react'
 
-export type CustomInputProps = InputProps;
+export type CustomInputProps = InputProps
 
 export const CustomInput = ({ ...props }: CustomInputProps) => {
-  const inputWrapperClasses = props.classNames?.inputWrapper;
+  const inputWrapperClasses = props.classNames?.inputWrapper
   const inputWrapperClassesFromProps = Array.isArray(inputWrapperClasses)
     ? [...inputWrapperClasses]
-    : [inputWrapperClasses];
+    : [inputWrapperClasses]
   return (
     <Input
       {...props}
@@ -18,13 +18,13 @@ export const CustomInput = ({ ...props }: CustomInputProps) => {
         ...props.classNames,
         inputWrapper: [
           ...inputWrapperClassesFromProps,
-          "border-blue-600",
-          "hover:!border-blue-400",
-          "group-data-[focus=true]:!border-blue-800", // Focus
-          "!transition-all",
-          "!duration-300",
+          'border-blue-600',
+          'hover:!border-blue-400',
+          'group-data-[focus=true]:!border-blue-600', // Focus
+          '!transition-all',
+          '!duration-300',
         ],
       }}
     />
-  );
-};
+  )
+}

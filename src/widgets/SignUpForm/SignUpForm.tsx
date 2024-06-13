@@ -1,11 +1,12 @@
-import { Button, Input } from "@nextui-org/react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { CustomInput, Space } from "@/shared";
+import { Button, Input } from '@nextui-org/react'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { CustomInput, Space } from '@/shared'
 
 export const SignUpForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const redirectToSignInHandler = () => router.push('/signin')
 
   return (
     <Space className="flex-col gap-4">
@@ -33,12 +34,12 @@ export const SignUpForm = () => {
           <Button
             variant="light"
             color="primary"
-            onClick={() => router.push("/signin")}
+            onClick={redirectToSignInHandler}
           >
             Уже есть аккаунт ?
           </Button>
         </Space>
       </form>
     </Space>
-  );
-};
+  )
+}

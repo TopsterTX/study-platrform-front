@@ -10,13 +10,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "effector": "^23.2.0",
-    "effector-react": "^23.2.0",
+    "@effector/next": "^0.7.0",
+    "@hookform/resolvers": "^3.6.0",
     "@nextui-org/react": "^2.4.1",
     "axios": "1.6.8",
     "clsx": "^2.1.1",
+    "effector": "^23.2.0",
+    "effector-react": "^23.2.0",
     "framer-motion": "^11.2.10",
-    "@effector/next": "^0.7.0",
+    "joi": "^17.13.1",
     "next": "14.1.3",
     "ofetch": "^1.3.4",
     "prettier": "^3.2.5",

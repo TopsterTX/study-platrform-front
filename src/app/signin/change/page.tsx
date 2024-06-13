@@ -1,16 +1,14 @@
 'use client'
 
-import { Button, Flex, Typography } from 'antd'
-import { CenterContainer } from '@/shared'
+import { CenterContainer, FullWidthContainer } from '@/shared'
 import { ChangePasswordForm } from '@/widgets'
-
-const { Title } = Typography
 
 export default function ChangePasswordPage() {
   return (
-    <CenterContainer vertical className="min-w-full">
-      <Title level={2}>Смена пароля</Title>
-      <ChangePasswordForm />
-    </CenterContainer>
+    <FullWidthContainer>
+      <CenterContainer className="w-full h-full">
+        <ChangePasswordForm />
+      </CenterContainer>
+    </FullWidthContainer>
   )
 }

@@ -1,5 +1,5 @@
 import { createEffect } from 'effector'
-import { FetchContext, FetchError, FetchResponse, IFetchError } from 'ofetch'
+import { FetchError } from 'ofetch'
 import { changeErrorEvent, request } from '@/shared'
 
 export type SignUpRequestPayload = {

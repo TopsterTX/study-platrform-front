@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <main className="flex justify-center items-center min-h-svh">
-      <div className="w-96">{children}</div>
+      {children}
     </main>
   )
 }

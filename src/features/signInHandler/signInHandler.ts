@@ -1,5 +1,5 @@
 import { createEffect } from 'effector'
-import { FetchContext, FetchResponse, IFetchError, FetchError } from 'ofetch'
+import { FetchError } from 'ofetch'
 import { request } from '@/shared'
 
 type SignInRequestPayload = {
