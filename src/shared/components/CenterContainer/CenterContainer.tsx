@@ -1,13 +1,15 @@
-import { Flex } from "antd";
+import { getClassName, Space } from "@/shared";
 import { CenterContainerProps } from "./types";
 
 export const CenterContainer = ({
   children,
-  ...other
+  className,
 }: CenterContainerProps) => {
   return (
-    <Flex justify="center" align="center" {...other}>
+    <Space
+      className={getClassName("justify-center", "items-center", className)}
+    >
       {children}
-    </Flex>
+    </Space>
   );
 };

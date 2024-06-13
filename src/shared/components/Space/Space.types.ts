@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type CenterContainerProps = {
+export type SpaceProps = {
   children: ReactNode;
   className?: string;
 };

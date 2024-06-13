@@ -1,46 +1,31 @@
-import { useRouter } from 'next/navigation'
-import { useUnit } from 'effector-react'
-import { Button, Flex, Form, Input } from 'antd'
-import { signInFx } from '@/features'
-import { DEFAULT_VALIDATE_TEXT } from '@/shared'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Space } from "@/shared";
+import { Button, Input } from "@nextui-org/react";
 
-export default function SignInForm() {
-  const loading = useUnit(signInFx.pending)
-  const router = useRouter()
-
-  const redirectToSignUpHandler = () => router.push('/signup')
+export const SignInForm = () => {
+  const [isLoading, setIsLoading] = useState();
+  const router = useRouter();
 
   return (
-    <Form
-      name="basic"
-      autoComplete="off"
-      layout="horizontal"
-      onFinish={signInFx}
-      className="min-w-full"
-      disabled={loading}
-    >
-      <Form.Item
-        name="email"
-        rules={[{ required: true, message: DEFAULT_VALIDATE_TEXT }]}
+    <Space className="flex flex-col gap-4">
+      <Space className="flex-col max-w-72 gap-4 mb-4 justify-center items-center m-auto">
+        <p className="text-3xl text-blue-600 flex text-center">Вход</p>
+      </Space>
+      <form
+        name="basic"
+        autoComplete="off"
+        className="flex w-80 flex-col gap-2"
       >
-        <Input autoComplete="off" placeholder="Email" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: DEFAULT_VALIDATE_TEXT }]}
-      >
-        <Input.Password autoComplete="off" placeholder="Пароль" />
-      </Form.Item>
-      <Form.Item>
-        <Button
-          type="primary"
-          htmlType="submit"
-          className="min-w-full"
-          loading={loading}
-        >
-          Войти
-        </Button>
-      </Form.Item>
-    </Form>
-  )
-}
+        <Input autoComplete="off" placeholder="Имя пользователя" />
+        <Input autoComplete="off" placeholder="Пароль" />
+        <Space>
+          <Button type="submit">Войти</Button>
+          <Button onClick={() => router.push("/signup")}>
+            Зарегистрироваться
+          </Button>
+        </Space>
+      </form>
+    </Space>
+  );
+};
