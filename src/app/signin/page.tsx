@@ -5,11 +5,9 @@ import { SignInForm } from '@/widgets'
 
 const SignInPage = () => {
   return (
-    <FullWidthContainer>
-      <CenterContainer className="w-full h-full ">
-        <SignInForm />
-      </CenterContainer>
-    </FullWidthContainer>
+    <CenterContainer className="w-full h-full ">
+      <SignInForm />
+    </CenterContainer>
   )
 }
 
