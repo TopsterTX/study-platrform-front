@@ -1,0 +1,6 @@
+extends:
+  - "next/core-web-vitals"
+  - "plugin:effector/react"
+
+plugins:
+  - "effector"

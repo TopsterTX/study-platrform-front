@@ -1,7 +1,8 @@
-"use client";
+'use client'
 
-import { CenterContainer, FullWidthContainer } from "@/shared/components";
-import { SignUpForm } from "@/widgets";
+import { CenterContainer, FullWidthContainer } from '@/shared/components'
+import { SignUpForm } from '@/widgets'
+import { useRouter } from 'next/navigation'
 
 const SignUpPage = () => {
   return (
@@ -10,7 +11,7 @@ const SignUpPage = () => {
         <SignUpForm />
       </CenterContainer>
     </FullWidthContainer>
-  );
-};
+  )
+}
 
-export default SignUpPage;
+export default SignUpPage

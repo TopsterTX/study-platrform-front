@@ -1,1 +1,1 @@
-export { putToAPI, postToAPI, getFromAPI, deleteFromAPI } from "./api";
+export { request } from './api'

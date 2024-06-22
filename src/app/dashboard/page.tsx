@@ -1,7 +1,7 @@
-"use client";
+import { Button } from "antd";
 
-const DashboardPage = () => {
-  return <div>Dashboard</div>;
+const DashboardPage = async () => {
+  return <Button>Button</Button>;
 };
 
 export default DashboardPage;
