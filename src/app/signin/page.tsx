@@ -1,16 +1,16 @@
 "use client";
 
 import { CenterContainer, FullWidthContainer } from "@/shared/components";
-import { SignUpForm } from "@/widgets";
+import { SignInForm } from "@/widgets";
 
-const SignUpPage = () => {
+const SignInPage = () => {
   return (
     <FullWidthContainer>
       <CenterContainer className="w-full h-full">
-        <SignUpForm />
+        <SignInForm />
       </CenterContainer>
     </FullWidthContainer>
   );
 };
 
-export default SignUpPage;
+export default SignInPage;
