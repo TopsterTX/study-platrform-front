@@ -1,4 +1,7 @@
 import { Metadata } from 'next'
+// import { forwardRef } from 'react'
+// import { motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 type LayoutProps = Readonly<{
   children: React.ReactNode

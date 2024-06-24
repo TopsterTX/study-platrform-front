@@ -1,19 +1,19 @@
 'use client'
 
-import { AnimationWrapper, CenterContainer } from '@/shared/components'
-import { SignUpForm } from '@/widgets'
+import { AnimationWrapper, CenterContainer } from '@/shared'
+import { ChangePasswordForm } from '@/widgets'
 import { AnimatePresence } from 'framer-motion'
 
-const SignUpPage = () => {
+const ChangePasswordPage = () => {
   return (
     <AnimatePresence mode="popLayout">
       <CenterContainer>
         <AnimationWrapper>
-          <SignUpForm />
+          <ChangePasswordForm />
         </AnimationWrapper>
       </CenterContainer>
     </AnimatePresence>
   )
 }
 
-export default SignUpPage
+export default ChangePasswordPage
