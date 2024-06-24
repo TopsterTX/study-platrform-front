@@ -1,14 +1,20 @@
 'use client'
 
-import { CenterContainer, FullWidthContainer } from '@/shared/components'
+import { AnimatePresence, motion } from 'framer-motion'
+import { CenterContainer, AnimationWrapper } from '@/shared/components'
 import { SignInForm } from '@/widgets'
 
 const SignInPage = () => {
   return (
-    <CenterContainer className="w-full h-full ">
-      <SignInForm />
-    </CenterContainer>
+    <AnimatePresence mode="popLayout">
+      <CenterContainer>
+        <AnimationWrapper>
+          <SignInForm />
+        </AnimationWrapper>
+      </CenterContainer>
+    </AnimatePresence>
   )
 }
 
+SignInPage.displayName = 'SignInPage'
 export default SignInPage

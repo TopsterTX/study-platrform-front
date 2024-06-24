@@ -1,10 +1,11 @@
 import { Button, Input } from '@nextui-org/react'
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { CustomInput, Space } from '@/shared'
 
 export const SignUpForm = () => {
-  const [isLoading, setIsLoading] = useState(false)
+  const {} = useForm({})
+
   const router = useRouter()
   const redirectToSignInHandler = () => router.push('/signin')
 

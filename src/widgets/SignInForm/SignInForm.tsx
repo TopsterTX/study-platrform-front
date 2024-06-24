@@ -24,7 +24,7 @@ export const SignInForm = () => {
         <CustomInput
           label="Пароль"
           description={
-            <Link size="sm" href="/signin/change">
+            <Link size="sm" href="/change">
               Забыли пароль?
             </Link>
           }
