@@ -1,8 +1,29 @@
+'use client'
+
 import { Input, InputProps } from '@nextui-org/react'
+import {
+  useController,
+  FieldValues,
+  Path,
+  useFormContext,
+} from 'react-hook-form'
 
-export type CustomInputProps = InputProps
+export type CustomInputProps<T extends FieldValues> = Omit<
+  InputProps,
+  'name'
+> & {
+  name: Path<T>
+}
 
-export const CustomInput = ({ ...props }: CustomInputProps) => {
+export const CustomInput = <T extends FieldValues>({
+  ...props
+}: CustomInputProps<T>) => {
+  const { control } = useFormContext<T>()
+  const {
+    field,
+    fieldState: { error },
+  } = useController<T>({ control, name: props.name })
+
   const inputWrapperClasses = props.classNames?.inputWrapper
   const inputWrapperClassesFromProps = Array.isArray(inputWrapperClasses)
     ? [...inputWrapperClasses]
@@ -10,6 +31,8 @@ export const CustomInput = ({ ...props }: CustomInputProps) => {
   return (
     <Input
       {...props}
+      {...field}
+      errorMessage={error?.message || ''}
       radius="sm"
       size="sm"
       variant="bordered"
