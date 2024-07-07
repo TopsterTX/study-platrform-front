@@ -29,25 +29,33 @@ export const CustomInput = <T extends FieldValues>({
     ? [...inputWrapperClasses]
     : [inputWrapperClasses]
   return (
-    <Input
-      {...props}
-      {...field}
-      errorMessage={error?.message || ''}
-      radius="sm"
-      size="sm"
-      variant="bordered"
-      autoComplete="off"
-      classNames={{
-        ...props.classNames,
-        inputWrapper: [
-          ...inputWrapperClassesFromProps,
-          'border-blue-600',
-          'hover:!border-blue-400',
-          'group-data-[focus=true]:!border-blue-600', // Focus
-          '!transition-all',
-          '!duration-300',
-        ],
-      }}
-    />
+    <article className="relative">
+      <Input
+        {...props}
+        {...field}
+        errorMessage={error?.message || ''}
+        color={error?.message ? 'danger' : 'default'}
+        radius="sm"
+        size="sm"
+        variant="bordered"
+        autoComplete="off"
+        // classNames={{
+        //   ...props.classNames,
+        //   inputWrapper: [
+        //     ...inputWrapperClassesFromProps,
+        //     'border-blue-600',
+        //     'hover:!border-blue-400',
+        //     'group-data-[focus=true]:!border-blue-600', // Focus
+        //     '!transition-all',
+        //     '!duration-300',
+        //   ],
+        // }}
+      />
+      {error?.message && (
+        <p className="absolute top-[50px] text-xs text-red-500">
+          {error?.message}
+        </p>
+      )}
+    </article>
   )
 }

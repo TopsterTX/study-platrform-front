@@ -42,8 +42,11 @@ export const ChangePasswordForm = () => {
           <PasswordInputBlock
             label="Новый пароль"
             name="password"
-            progressName="passwordProgress"
-            confirmPasswordName="confirmPassword"
+            progressProps={{ name: 'passwordProgress' }}
+            confirmPasswordProps={{
+              name: 'confirmPassword',
+              label: 'Подтвердите пароль',
+            }}
           />
           <Space className="flex-col gap-4">
             <Button

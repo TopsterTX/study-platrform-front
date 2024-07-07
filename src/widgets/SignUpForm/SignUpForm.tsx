@@ -1,13 +1,16 @@
 import { Button } from '@nextui-org/react'
 import { FormProvider, useForm, useWatch } from 'react-hook-form'
-import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-import { CustomInput, Space } from '@/shared'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { CustomInput, CustomTooltip, Space } from '@/shared'
+import { PasswordInputBlock } from '@/shared/components'
 import { FormState } from './SignUpForm.types'
-import { PasswordInputBlock } from '@/shared/components/PasswordInputBlock/PasswordInputBlock'
+import { schema } from './SignUpForm.schema'
 
 export const SignUpForm = () => {
   const methods = useForm<FormState>({
+    resolver: zodResolver(schema),
+    mode: 'onChange',
     defaultValues: {
       username: null,
       password: null,
@@ -53,14 +56,22 @@ export const SignUpForm = () => {
             type="password"
             label="Пароль"
             name="password"
-            progressName="passwordProgress"
-            confirmPasswordName="confirmPassword"
+            progressProps={{ name: 'passwordProgress' }}
+            confirmPasswordProps={{
+              name: 'confirmPassword',
+              label: 'Подтвердите пароль',
+            }}
             key="password"
           />
           <CustomInput<FormState>
             label="Кодовое слово"
             name="secret"
             key="secret"
+            description={
+              <CustomTooltip content="Кодовое слово необходимо для смены пароля. Важно запомнить его, и не сообщать третьим лицам.">
+                Что это ?
+              </CustomTooltip>
+            }
           />
           <Space className="flex-col gap-y-4">
             <Button type="submit" radius="sm" variant="shadow" color="primary">
