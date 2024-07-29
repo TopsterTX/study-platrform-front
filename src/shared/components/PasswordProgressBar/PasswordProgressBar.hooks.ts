@@ -11,7 +11,6 @@ import { ProgressProps } from '@nextui-org/react'
 import {
   ERROR_PASSWORD_LENGTH_MAX_PERCENT,
   MAX_PROGRESS_VALUE,
-  MIN_PASSWORD_LENGTH,
   SUCCESS_PASSWORD_LENGTH_MIN_PERCENT,
   WARN_PASSWORD_LENGTH_MIN_PERCENT,
 } from '@/shared/constants'

@@ -11,10 +11,6 @@ const minPasswordLength = getPercentValue(
 )
 
 export const schema = zod.object({
-  username: zod.string().min(4, 'Неверное имя пользователя'),
   email: zod.string().email('Неверная почта'),
   password: zod.string().min(minPasswordLength, 'Неверный пароль'),
-  confirmPassword: zod.string(),
-  passwordProgress: zod.number(),
-  secret: zod.string().min(4, 'Минимум - 4 символа'),
 })

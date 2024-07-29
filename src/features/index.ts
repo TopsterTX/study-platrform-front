@@ -1,3 +1,6 @@
-export { signInFx } from './signInHandler/signInHandler'
-export { signUpFx } from './signUpHandler/signUpHandler'
-export { changePasswordFx } from './changePassportHandler/changePassportHandler'
+export { signInFx, $signInFxPending } from './signInHandler/signInHandler'
+export { signUpFx, $signUpFxPending } from './signUpHandler/signUpHandler'
+export {
+  changePasswordFx,
+  $changePasswordFxPending,
+} from './changePassportHandler/changePassportHandler'

@@ -1,3 +1,5 @@
+'use client'
+
 import { changePasswordFx } from '@/features'
 import { Button, Input } from '@nextui-org/react'
 import { useUnit } from 'effector-react'
@@ -10,10 +12,10 @@ export const ChangePasswordForm = () => {
   const methods = useForm<FormState>({
     defaultValues: {
       passwordProgress: 0,
-      secret: null,
-      password: null,
-      confirmPassword: null,
-      email: null,
+      secret: '',
+      password: '',
+      confirmPassword: '',
+      email: '',
     },
   })
   const router = useRouter()
@@ -32,22 +34,20 @@ export const ChangePasswordForm = () => {
             Измение пароля
           </p>
         </Space>
-        <form
-          name="basic"
-          autoComplete="off"
-          className="w-80 flex gap-6 flex-col"
-        >
-          <CustomInput label="Email" name="email" />
-          <CustomInput label="Секретная фраза" name="secret" />
-          <PasswordInputBlock
-            label="Новый пароль"
-            name="password"
-            progressProps={{ name: 'passwordProgress' }}
-            confirmPasswordProps={{
-              name: 'confirmPassword',
-              label: 'Подтвердите пароль',
-            }}
-          />
+        <form name="basic" autoComplete="off">
+          <Space className="w-80 gap-6 flex-col mb-14">
+            <CustomInput label="Email" name="email" />
+            <CustomInput label="Секретная фраза" name="secret" />
+            <PasswordInputBlock
+              label="Новый пароль"
+              name="password"
+              progressProps={{ name: 'passwordProgress' }}
+              confirmPasswordProps={{
+                name: 'confirmPassword',
+                label: 'Подтвердите пароль',
+              }}
+            />
+          </Space>
           <Space className="flex-col gap-4">
             <Button
               type="submit"

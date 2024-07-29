@@ -21,6 +21,7 @@ export const PasswordInput = <T extends FieldValues>(
       name={props.name}
       endContent={
         <button
+          tabIndex={-1}
           className="focus:outline-none"
           type="button"
           onClick={toggleVisibility}

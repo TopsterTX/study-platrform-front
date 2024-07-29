@@ -25,22 +25,20 @@ export const PasswordInputBlock = <T extends FieldValues>({
   return (
     <>
       <PasswordInput {...props} type="password" />
-      <Space className="flex-col gap-4">
-        {confirmPasswordName && (
-          <PasswordInput
-            {...confirmPasswordProps}
-            name={confirmPasswordName as string}
-            label="Подтвердите пароль"
-          />
-        )}
-        {progressName && (
-          <PasswordProgressBar
-            confirmPasswordName={confirmPasswordName}
-            passwordName={props.name}
-            name={progressName}
-          />
-        )}
-      </Space>
+      {confirmPasswordName && (
+        <PasswordInput
+          {...confirmPasswordProps}
+          name={confirmPasswordName as string}
+          label="Подтвердите пароль"
+        />
+      )}
+      {progressName && (
+        <PasswordProgressBar
+          confirmPasswordName={confirmPasswordName}
+          passwordName={props.name}
+          name={progressName}
+        />
+      )}
     </>
   )
 }

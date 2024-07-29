@@ -30,5 +30,4 @@ export const changePasswordFx = createEffect<
   },
 })
 
-changePasswordFx.doneData.watch(console.log)
-changePasswordFx.failData.watch(console.log)
+export const $changePasswordFxPending = changePasswordFx.pending

@@ -34,5 +34,4 @@ export const signInFx = createEffect<
   },
 })
 
-signInFx.doneData.watch(console.log)
-signInFx.failData.watch(console.log)
+export const $signInFxPending = signInFx.pending

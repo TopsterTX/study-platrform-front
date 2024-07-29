@@ -7,15 +7,19 @@ import {
   Path,
   useFormContext,
 } from 'react-hook-form'
+import { getClassName, Space } from '@/shared'
 
 export type CustomInputProps<T extends FieldValues> = Omit<
   InputProps,
   'name'
 > & {
   name: Path<T>
+  descriptionClassName?: string
 }
 
 export const CustomInput = <T extends FieldValues>({
+  description,
+  descriptionClassName,
   ...props
 }: CustomInputProps<T>) => {
   const { control } = useFormContext<T>()
@@ -28,34 +32,30 @@ export const CustomInput = <T extends FieldValues>({
   const inputWrapperClassesFromProps = Array.isArray(inputWrapperClasses)
     ? [...inputWrapperClasses]
     : [inputWrapperClasses]
+
+  const isError = Boolean(error?.message)
   return (
-    <article className="relative">
+    <Space className="relative flex-col">
       <Input
         {...props}
         {...field}
-        errorMessage={error?.message || ''}
         color={error?.message ? 'danger' : 'default'}
         radius="sm"
         size="sm"
         variant="bordered"
         autoComplete="off"
-        // classNames={{
-        //   ...props.classNames,
-        //   inputWrapper: [
-        //     ...inputWrapperClassesFromProps,
-        //     'border-blue-600',
-        //     'hover:!border-blue-400',
-        //     'group-data-[focus=true]:!border-blue-600', // Focus
-        //     '!transition-all',
-        //     '!duration-300',
-        //   ],
-        // }}
       />
-      {error?.message && (
-        <p className="absolute top-[50px] text-xs text-red-500">
-          {error?.message}
-        </p>
-      )}
-    </article>
+      <Space
+        className={getClassName(
+          'absolute top-[53px] flex-col',
+          descriptionClassName
+        )}
+      >
+        {isError && (
+          <p className="text-xs text-red-500 mb-1">{error?.message}</p>
+        )}
+        {Boolean(description) && description}
+      </Space>
+    </Space>
   )
 }

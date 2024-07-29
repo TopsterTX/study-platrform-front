@@ -1,3 +1,5 @@
+'use client'
+
 import { Tooltip, TooltipProps } from '@nextui-org/react'
 import { ReactNode } from 'react'
 
