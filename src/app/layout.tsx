@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import cn from 'classnames'
 import { Inter } from 'next/font/google'
 import { ClientProviders } from '@/configs'
 import './globals.css'
@@ -12,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(inter.className, 'h-full')}>
         <ClientProviders>{children}</ClientProviders>
       </body>
     </html>

@@ -2,8 +2,8 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { ReactNode } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { schema } from './SignInForm.schema'
-import { onSubmit } from './SignInForm.utils'
 import { FormState } from './SignInForm.types'
+import { useFormSubmit } from './SignInForm.hooks'
 
 type SignInFormContextProps = {
   children: ReactNode
@@ -20,6 +20,8 @@ export const SignInFormForm = ({ children }: SignInFormContextProps) => {
   })
 
   const { handleSubmit } = methods
+
+  const onSubmit = useFormSubmit()
 
   return (
     <FormProvider {...methods}>

@@ -20,18 +20,17 @@ const signInRequest = async (body: SignInRequestPayload) => {
   return response
 }
 
-export const signInFx = createEffect<
-  SignInRequestPayload,
-  string | null | undefined
->('signIn', {
-  handler: async (values: SignInRequestPayload) => {
-    try {
-      const { access_token: token } = await signInRequest(values)
-      return token
-    } catch (error) {
-      if (error instanceof FetchError) throw new Error(error.data?.message)
-    }
-  },
-})
+export const signInFx = createEffect<(data: SignInRequestPayload) => void>(
+  'signIn',
+  {
+    handler: async (values: SignInRequestPayload) => {
+      try {
+        await signInRequest(values)
+      } catch (error) {
+        if (error instanceof FetchError) throw new Error(error.data?.message)
+      }
+    },
+  }
+)
 
 export const $signInFxPending = signInFx.pending
