@@ -28,7 +28,9 @@ export const signUpFx = createEffect<
 >('signUp', {
   handler: async (body) => {
     try {
-      return await signUpHandler(body)
+      const response = await signUpHandler(body)
+
+      return response
     } catch (error) {
       if (error instanceof FetchError) {
         changeErrorEvent(error.data.message)
@@ -37,5 +39,4 @@ export const signUpFx = createEffect<
   },
 })
 
-signUpFx.doneData.watch(console.log)
-signUpFx.failData.watch(console.log)
+export const $signUpFxPending = signUpFx.pending
