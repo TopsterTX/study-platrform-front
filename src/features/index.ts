@@ -10,4 +10,5 @@ export {
   $getCurrentUserDataFxPending,
   $getCurrentUserData,
   $getCurrentUserDataError,
+  getUserDataEvent,
 } from './getCurrentUserDataHandler/getCurrentUserDataHandler'

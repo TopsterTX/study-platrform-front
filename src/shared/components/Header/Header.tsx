@@ -9,16 +9,22 @@ import {
   PopoverContent,
   Listbox,
   ListboxItem,
-  Button,
-  User,
 } from '@nextui-org/react'
-import { logoutFx, $logoutFxPending } from '@/features'
+import {
+  logoutFx,
+  $getCurrentUserDataFxPending,
+  $getCurrentUserData,
+  getUserDataEvent,
+} from '@/features'
 import { useUnit } from 'effector-react'
 import { useRouter } from 'next/navigation'
 
 export const Header = () => {
   const router = useRouter()
-  const [logoutPending] = useUnit([$logoutFxPending])
+  const [pending, userData] = useUnit([
+    $getCurrentUserDataFxPending,
+    $getCurrentUserData,
+  ])
 
   const listBoxActionHandler = async (key: unknown) => {
     if (key === 'logout') {
@@ -28,25 +34,31 @@ export const Header = () => {
   }
 
   return (
-    <div className="h-14 py-3 px-4 mb-8">
-      <Space className="justify-end">
-        <Popover placement="right">
-          <PopoverTrigger>
-            <Avatar src="./images/yuri.jpg" />
-          </PopoverTrigger>
-          <PopoverContent>
-            <Listbox
-              aria-label="Example with disabled actions"
-              onAction={listBoxActionHandler}
-            >
-              <ListboxItem key="settings">Settings</ListboxItem>
-              <ListboxItem key="logout" className="text-danger" color="danger">
-                Logout
-              </ListboxItem>
-            </Listbox>
-          </PopoverContent>
-        </Popover>
-      </Space>
+    <div className="h-14 py-3 px-4 mb-8 shadow-md">
+      <div className="max-w-7xl m-auto">
+        <Space className="justify-end">
+          <Popover placement="right">
+            <PopoverTrigger>
+              <Avatar />
+            </PopoverTrigger>
+            <PopoverContent>
+              <Listbox
+                aria-label="Example with disabled actions"
+                onAction={listBoxActionHandler}
+              >
+                <ListboxItem key="settings">Settings</ListboxItem>
+                <ListboxItem
+                  key="logout"
+                  className="text-danger"
+                  color="danger"
+                >
+                  Logout
+                </ListboxItem>
+              </Listbox>
+            </PopoverContent>
+          </Popover>
+        </Space>
+      </div>
     </div>
   )
 }

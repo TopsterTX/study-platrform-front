@@ -12,7 +12,7 @@ type SignInFormContextProps = {
 export const SignInFormForm = ({ children }: SignInFormContextProps) => {
   const methods = useForm<FormState>({
     resolver: zodResolver(schema),
-    mode: 'onChange',
+    mode: 'onBlur',
     defaultValues: {
       email: '',
       password: '',

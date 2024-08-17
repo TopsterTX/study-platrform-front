@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { EffectorNext } from '@effector/next'
 import cn from 'classnames'
 import { Inter } from 'next/font/google'
 import { ClientProviders } from '@/configs'
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, 'h-full')}>
-        <ClientProviders>{children}</ClientProviders>
+        <EffectorNext>
+          <ClientProviders>{children}</ClientProviders>
+        </EffectorNext>
       </body>
     </html>
   )
